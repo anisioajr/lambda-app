@@ -22,4 +22,4 @@ jobs:
       run: python -m py_compile lambda-anisio.py  # Substitua pelo nome do seu programa
 
     - name: Copiar para AWS S3
-      run: aws s3 cp lambda-anisio.py s3://anisiobucket-prd/ --region us-east-1 --access-key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret-key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      run: aws s3 cp https://github.com/anisioajr/lambda-app/blob/main/lambda-anisio.py s3://anisiobucket-prd/ --region us-east-1 --access-key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret-key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
