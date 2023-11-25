@@ -22,7 +22,9 @@ jobs:
   #    run: pip install -r requirements.txt  # Substitua pelo comando correto se necessário
 
     - name: Validar sintaxe do Python
-      run: python -m py_compile lambda-anisio.py  # Substitua pelo nome do seu programa
+      run: 
+        echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+        python -m py_compile lambda-anisio.py  # Substitua pelo nome do seu programa
 
     - name: Configurar credenciais da AWS
       run: |
