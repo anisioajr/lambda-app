@@ -23,7 +23,6 @@ jobs:
 
     - name: Validar sintaxe do Python
       run: 
-        echo $AWS_ACCESS_KEY_ID
         python -m py_compile lambda-anisio.py  # Substitua pelo nome do seu programa
 
 #    - name: Configurar credenciais da AWS
