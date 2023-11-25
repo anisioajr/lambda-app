@@ -1,11 +1,9 @@
 # try it
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
 
-api_key = ${{ secrets.AWS_ACCESS_KEY_ID }}
-api_secret = ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+AWS_ACCESS_KEY_ID = os.environ["aws_access_key_id"]
+AWS_SECRET_ACCESS_KEY  = os.environ["aws_secret_access_key"]
 
-print("API_KEY: ", api_key)
-print("API_SECRET: ", api_secret)
+print(f"API_KEY: { AWS_ACCESS_KEY_ID}")
+print(f"API_SECRET: {AWS_SECRET_ACCESS_KEY}")
