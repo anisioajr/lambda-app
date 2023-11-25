@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - main
-
-env:
-  aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   
 jobs:
   deploy:
@@ -30,14 +26,15 @@ jobs:
         echo $AWS_ACCESS_KEY_ID
         python -m py_compile lambda-anisio.py  # Substitua pelo nome do seu programa
 
-    - name: Configurar credenciais da AWS
-      run: |
-        echo AWS_ACCESS_KEY_ID
-        echo AWS_SECRET_ACCESS_KEY
-        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws configure set region us-east-1  # Substitua pela sua região
-        
+#    - name: Configurar credenciais da AWS
+#      run: 
+#        aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+#        aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#        aws configure set region us-east-1  # Substitua pela sua região
 
     - name: Copiar para AWS S3
       run: aws s3 cp lambda-anisio.py s3://anisiobucket-prd/  # Substitua pelo nome do seu programa e bucket
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws configure set region us-east-1  # Substitua pela sua região
