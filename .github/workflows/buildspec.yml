@@ -18,11 +18,11 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Instalar dependências
-      run: pip install -r requirements.txt  # Substitua pelo comando correto se necessário
+  #  - name: Instalar dependências
+  #    run: pip install -r requirements.txt  # Substitua pelo comando correto se necessário
 
     - name: Validar sintaxe do Python
-      run: python -m py_compile your_program.py  # Substitua pelo nome do seu programa
+      run: python -m py_compile lambda-anisio.py  # Substitua pelo nome do seu programa
 
     - name: Configurar credenciais da AWS
       run: |
@@ -31,4 +31,4 @@ jobs:
         aws configure set region us-east-1  # Substitua pela sua região
 
     - name: Copiar para AWS S3
-      run: aws s3 cp your_program.py s3://anisiobucket-prd/  # Substitua pelo nome do seu programa e bucket
+      run: aws s3 cp lambda-anisio.py s3://anisiobucket-prd/  # Substitua pelo nome do seu programa e bucket
